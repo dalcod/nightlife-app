@@ -1,0 +1,36 @@
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid green;
+}
+.ng-invalid:not(form) {
+    border-left: 5px solid red;
+}
+h1 {
+    text-align: center; 
+    margin-top: 50px;
+    color: black;
+}
+form {
+    margin-top: 50px;
+}
+.error {
+    background-color: #ff4646;
+    color: #790000;
+    padding-left: 10px;
+    padding-top: 7px;
+    padding-bottom: 12px;
+}
+.btn-cont + div {
+    margin-top: 10px;
+}
+.serverErr {
+    text-align: center; 
+    margin-top: 150px;
+    color: red;
+}
+.text{
+    margin-top: 50px;
+    margin-bottom: -10px;
+}
+.align{
+    text-align: center;
+}

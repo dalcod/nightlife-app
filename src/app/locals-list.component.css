@@ -1,0 +1,62 @@
+.input-cont button {
+    color: #1441db;
+    border-color: #1441db;
+}
+.input-cont button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #1441db;
+}
+.loading {
+    margin-top: 100px;
+}
+.loading i {
+    display: inline-block;
+    color: #1441db;
+}
+.loading p {
+    margin-top: 10px;
+    color: #1441db;
+}
+img {
+    width: 150px;
+    height: 150px;
+    margin: 5px 50px 5px 15px;
+    float: left;
+}
+.cont {
+    margin-left: -7px;
+}
+.a, .b, .c{
+    height: 50px;
+    position: relative;
+}
+.a {
+    margin-top: 16px;
+}
+.a h4 a{
+    display: inline-block;
+    color: #db1441;
+}
+.b button {
+    color: #41db14;
+    border-color: #41db14;
+}
+.b button:hover {
+    cursor: pointer;
+    background-color: #41db14;
+    color: white;
+}
+.align {
+    text-align: center;
+}
+.error {
+    margin-top: 150px;
+    color: red;
+}
+span {
+    margin-right: 5px;
+}
+i {
+    color: gold;
+}

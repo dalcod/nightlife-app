@@ -1,0 +1,13 @@
+h1 {
+    margin-top: 60px;
+    margin-bottom: 100px;
+    color: #1441db;
+    font-size: 4rem;
+}
+.align {
+    text-align: center;
+}
+.error {
+    margin-top: 150px;
+    color: red;
+}

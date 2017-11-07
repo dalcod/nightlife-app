@@ -1,0 +1,41 @@
+<h1 *ngIf="httpErr" class="error align">{{httpErr}}</h1>
+<section *ngIf="!httpErr">
+    <form [formGroup]="localsForm" (ngSubmit)="onSubmit(localsForm.value)">
+        <div class="input-cont form-group form-inline justify-content-around">
+            <input class="form-control col-sm-9" type="text" formControlName="location" placeholder="Where you at?" value="{{lastSearch}}">
+            <button class="btn btn-outline-primary col-sm-2">Go</button>
+        </div>
+    </form>
+    <div *ngIf="!httpErr && loading && !locals" class="loading align">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        <p>Searching...</p>
+    </div>
+    <div *ngIf="locals">
+        <div *ngFor="let local of locals; trackBy: trackByLocals">
+            <div class="row cont">
+                <div class="col-sm-2">
+                    <img src="{{local.image_url}}">
+                </div>
+                <div class="col-sm-10">
+                    <div class="col-sm-10 a">
+                        <h4><a href="{{local.url}}" target="_blank">{{local.name}}</a></h4>
+                    </div>
+                    <div class="col-sm-10 b">
+                        <button class="btn btn-outline-primary" (click)="selected(local)">Going {{local.selected}}</button>
+                    </div>
+                    <div class="col-sm-10 c">
+                        <i class="fa fa-star"></i>
+                        <i *ngIf="local.rating === 1.5" class="fa fa-star-half-empty"></i>
+                        <i *ngIf="local.rating >= 2" class="fa fa-star"></i>
+                        <i *ngIf="local.rating === 2.5" class="fa fa-star-half-empty"></i>
+                        <i *ngIf="local.rating >= 3" class="fa fa-star"></i>
+                        <i *ngIf="local.rating === 3.5" class="fa fa-star-half-empty"></i>
+                        <i *ngIf="local.rating >= 4" class="fa fa-star"></i>
+                        <i *ngIf="local.rating === 4.5" class="fa fa-star-half-empty"></i>
+                        <i *ngIf="local.rating === 5" class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

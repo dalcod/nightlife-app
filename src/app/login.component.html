@@ -1,0 +1,29 @@
+<div>
+    <h1>Login</h1>
+    <h2 *ngIf="httpErr" class="serverErr">{{httpErr}}</h2>
+    <div class="row justify-content-center">
+        <p class="col-sm-5 align text">If you don&#39;t have an account you can <a [routerLink]="['/signup']">signup here</a>.</p>
+    </div>
+    <form *ngIf="!httpErr" [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-4">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" formControlName="username">
+                <div class="error" *ngIf="formErrors.username">{{formErrors.username}}</div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-4">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="off" formControlName='password'>
+                <div class="error" *ngIf="formErrors.password">{{formErrors.password}}</div>
+            </div>
+        </div>
+        <div class="row justify-content-center btn-cont">
+            <button type="submit" class="col-sm-2 btn btn-primary">Submit</button>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-4 error" *ngIf="errMsg">{{errMsg}}</div>
+        </div>
+    </form>
+</div>

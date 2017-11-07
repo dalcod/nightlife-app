@@ -1,0 +1,35 @@
+<div>
+    <h1>Signup</h1>
+    <h2 *ngIf="httpErr" class="serverErr">{{httpErr}}</h2>
+    <form *ngIf="!httpErr" [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-4">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" autocomplete="off" formControlName="username">
+                <div class="error" *ngIf="formErrors.username">{{formErrors.username}}</div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-4">
+                <label for="password">Password</label>
+                <!-- la password deve contenere un valore massimo di caratteri -->
+                <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" formControlName='password'>
+                <div class="error" *ngIf="formErrors.password">{{formErrors.password}}</div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group col-sm-4">
+                <label for="confirmPass">Confirm password</label>
+                <!-- la password deve contenere un valore massimo di caratteri -->
+                <input type="password" class="form-control" id="confirmPass" placeholder="Password" autocomplete="off" formControlName='confirmPassword'>
+                <div class="error" *ngIf="formErrors.confirmPassword">{{formErrors.confirmPassword}}</div>
+            </div>
+        </div>
+        <div class="row justify-content-center btn-cont">
+            <button type="submit" class="col-sm-2 btn btn-primary">Submit</button>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-4 error" *ngIf="errMsg">{{errMsg}}</div>
+        </div>
+    </form>
+</div>
