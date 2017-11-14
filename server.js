@@ -9,7 +9,7 @@ var strategy = require("./setuppassport");
 
 var app = express();
 
-var mongoUrl = "mongodb://sulphurv:3MorsKomWin@ds159670.mlab.com:59670/thearchive";
+var mongoUrl = process.env.MONGODB_URI;
 mongoose.connect(mongoUrl);
 mongoose.connection.on("error", console.error.bind(console, "Unable to connect to MongoDB."));
 
@@ -21,6 +21,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "/dist")));
 app.use(routes);
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("Successfully connected on port: 3000");
 });
