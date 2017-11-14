@@ -5,33 +5,25 @@ var request = require('request');
 var path = require('path');
 
 var User = require("./model/user");
-var Token = require("./model/token");
 var Sel = require("./model/selected");
 var key = require("./secretKey");
 var authToken = '';
 
 var router = express.Router();
 
-/* var clientID = 'XvkbyZMYEH5_3t0kqIc2MA';
-var secret = 'p68pmxhvflo9obYuMFeSYdOz4GFdkjTh483M6sqWAe5O0HmXJ6mJfnhfwPj5ewKF';
+// funzione che ci consente di raccogliere l' OAuthToken che sarà necesasrio per autenticare la richiesta all'api "Yelp Fusion".
 router.get('/auth-token', function(req, res, next){
+    var clientID = 'XvkbyZMYEH5_3t0kqIc2MA';
+    var secret = 'p68pmxhvflo9obYuMFeSYdOz4GFdkjTh483M6sqWAe5O0HmXJ6mJfnhfwPj5ewKF';
     request.post({url:'https://api.yelp.com/oauth2/token',
                   form: {"client_id": clientID,
                          "client_secret":  secret,
                          "grant_type": "client_credentials"}},
                  function(err,httpResponse,body){
-        if (err) return console.error(err);
-        return res.end(body);
-    });
-}); */
-
-router.get('/auth-token', function(req, res, next){
-    Token.find({}, function(err, data){
         if (err) return res.status(500).send(err);
-        if(data){
-            authToken = data[0].access_token;
-            res.end();
-        }
+        body = JSON.parse(body);
+        authToken = body.access_token;
+        return res.end();
     });
 });
 
@@ -44,6 +36,7 @@ router.get('/locals/:city', function(req, res, next){
                  'auth': {'bearer': authToken}},
                 function(err,httpResponse,body){
         if (err) return res.status(500).send(err);
+        console.log(body)
         return res.json(body);
     });
 });
